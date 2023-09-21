@@ -94,3 +94,7 @@ Remove or rename the "setup" directory for security purposes.
 You can now access your Thinu-CMS blog by going to "http://yourdomain.com" in your web browser.
 
 Congratulations! You've successfully installed Thinu-CMS and can start creating and managing your blog content.
+
+
+<h3 align="left">Support:</h3>
+<p><a href="https://www.buymeacoffee.com/Thinura"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="Thinura" /></a></p><br><br>
