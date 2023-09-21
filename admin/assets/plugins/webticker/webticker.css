@@ -1,0 +1,8 @@
+ul#webticker li:hover.webticker-hover{
+    background: #ebf2f7!important;
+	cursor: pointer;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}

@@ -1,0 +1,24 @@
+Welcome to Installation Guide and Thank you for purchasing Thinu - CMS. This file includes all the steps to install 
+this blog system on your server.
+
+If you are hosting this blog system in your localhost, 
+	1. Go to PHPMyadmin.
+	2. Select import from the menu.
+	3. Then choose cms.sql from the Thinu - CMS Main File folder.
+	4. After that complete copy the main folder to, Xampp/htdocs.
+	5. Then you are good to go.
+
+If you are hosting this blog system in a hosting service provider,
+	1. You will find a Database section in the control panel.
+	2. Go to Database section and create a new database.
+	3. Then go back to control panel and find phpmyadmin in control panel.
+	4. Then choose cms.sql from the Thinu - CMS Main File folder.
+	5. After that upload all files to your server.
+	6. Make sure that the file manager on your hosting shows hidden files (dotfiles).
+	7. Open .env file in the root folder.
+	8. Then you have to change database connections according to hosting service provider
+	9. Then you are good to go.
+
+If you are facing to any issue contact me in the codester.
+
+Thank you very much!

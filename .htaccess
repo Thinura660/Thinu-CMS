@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^user/([a-zA-Z0-9-]+)$ user.php?user_id=$1 [NC,L]
+RewriteRule ^post/([a-zA-Z0-9-]+)$ post.php?p_seo=$1 [NC,L]
+RewriteRule ^category/([a-zA-Z0-9-]+)$ category.php?cat_id=$1 [NC,L]
