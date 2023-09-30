@@ -118,7 +118,7 @@
                         </article>
                         <!-- Post end-->
                     <?php
-                    } elseif (($show_draft_admin == 'on' and $_SESSION['user_role'] == 'admin') or ($show_draft_owner == 'on' and $_SESSION['user_role'] == 'owner')) {
+                    } elseif (isset($show_draft_admin) and ($show_draft_admin == 'on' and $_SESSION['user_role'] == 'admin') or ($show_draft_owner == 'on' and $_SESSION['user_role'] == 'owner')) {
 
                     ?>
 
