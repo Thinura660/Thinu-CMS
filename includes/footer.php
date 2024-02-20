@@ -1,38 +1,27 @@
-<br>
-
-<!-- Footer-->
-<footer class="footer" style="background-color: <?php echo $blog_theme ?>;">
-                
-                <div class="footer-bar">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p style="color: white;">© 2022 <?php echo $blog_name ?>, All Rights Reserved. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!-- Footer end-->
-        </div>
-        <!-- Wrapper end-->
-        <!-- Off canvas-->
-        
-
-        <!-- To top button--><a class="scroll-top" href="#top"><i class="fas fa-angle-up"></i></a>
-
-        <!-- Scripts-->
-<!--        <script src="--><?php //echo $projectFolderName . '/' ?><!--assets/js/custom/custom.js"></script>-->
-        <script src="<?php echo $projectFolderName . '/' ?>assets/js/custom/jquery.min.js"></script>
-        <script src="<?php echo $projectFolderName . '/' ?>assets/js/custom/popper.min.js"></script>
-        <script src="<?php echo $projectFolderName . '/' ?>assets/js/bootstrap/bootstrap.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0rANX07hh6ASNKdBr4mZH0KZSqbHYc3Q"></script>
-        <script src="<?php echo $projectFolderName . '/' ?>assets/js/custom/plugins.min.js"></script>
-        <script src="<?php echo $projectFolderName . '/' ?>assets/js/custom/custom.min.js"></script>
-    </body>
-
-</html>
+ <!--================================-->
+ <!-- Footer Script -->
+ <!--================================-->
+ <script src="assets/plugins/jquery/jquery.min.js"></script>
+ <script src="assets/plugins/jquery-ui/jquery-ui.js"></script>
+ <script src="assets/plugins/popper/popper.js"></script>
+ <script src="assets/plugins/feather-icon/feather.min.js"></script>
+ <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+ <script src="assets/plugins/pace/pace.min.js"></script>
+ <!-- <script src="assets/plugins/toastr/toastr.min.js"></script> -->
+ <script src="assets/plugins/countup/counterup.min.js"></script>
+ <script src="assets/plugins/waypoints/waypoints.min.js"></script>
+ <script src="assets/plugins/chartjs/chartjs.js"></script>
+ <script src="assets/plugins/apex-chart/apexcharts.min.js"></script>
+ <script src="assets/plugins/apex-chart/irregular-data-series.js"></script>
+ <script src="assets/plugins/simpler-sidebar/jquery.simpler-sidebar.min.js"></script>
+ <script src="assets/js/dashboard/sales-dashboard-init.js"></script>
+ <script src="assets/js/jquery.slimscroll.min.js"></script>
+ <script src="assets/js/highlight.min.js"></script>
+ <script src="assets/js/app.js"></script>
+ <script src="assets/js/custom.js"></script>
+ <script src="assets/plugins/chartist/chart-sample.js"></script>
 
 
+ </body>
+
+ </html>

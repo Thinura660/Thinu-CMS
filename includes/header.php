@@ -1,237 +1,81 @@
-<!DOCTYPE html>
 <?php ob_start() ?>
+
 <?php session_start(); ?>
-<?php include_once "db_conn.php"; ?>
-<?php include_once "admin/includes/functions.php"; ?>
 
-<?php
+<?php include "../db_conn.php" ?>
 
-$method = $_ENV['APP_ENV'];
-
-if ($method == "localhost") {
-    $projectFolderName = "/" . explode('/', $_SERVER['PHP_SELF'])[1];
-} else {
-    if (isset($_SERVER['HTTPS'])) {
-        $server = "https://";
-    } else {
-        $server = "http://";
-    }
-
-    $domain = $_SERVER['SERVER_NAME'];
-    $projectFolderName = $server . $domain;
-}
-?>
+<?php include "functions.php" ?>
 
 
 <?php
-if (!empty($_SESSION['username']) and !empty($_SESSION['user_role'])) {
-    $login = 1;
+
+$user_role = $_SESSION['user_role'];
+
+if (isset($_SESSION['user_role']) and $_SESSION['user_role'] == 'publisher' or $_SESSION['user_role'] == 'admin') {
 } else {
-    $login = 0;
+   header("Location: ../index.php");
 }
 
-$query = "SELECT * FROM settings";
-$select_settings = mysqli_query($connection, $query);
+$settings = "SELECT * FROM settings";
+$import_settings = mysqli_query($connection, $settings);
 
-while ($row = mysqli_fetch_array($select_settings)) {
-    $blog_name = $row['blog_name'];
-    $blog_theme = $row['theme_color'];
-    $blog_image = $row['blog_icon'];
-    $blog_email = $row['blog_email'];
-    $blog_description = $row['blog_description'];
-    $keywords = $row['keywords'];
-    $hero_title = $row['hero_title'];
-    $footer_text = $row['footer_text'];
-}
-
-$query = "SELECT * FROM navigation";
-$select_nav = mysqli_query($connection, $query);
-
-while ($row = mysqli_fetch_array($select_nav)) {
-    $showHome = $row['showHome'];
-    $showContact = $row['showContact'];
-    $showAdmin = $row['showAdmin'];
-    $showReg = $row['showReg'];
-    $showLogin = $row['showLogin'];
+while ($row = mysqli_fetch_assoc($import_settings)) {
+   $title = $row['blog_name'];
+   $blog_email = $row['blog_email'];
+   $theme_color = $row['theme_color'];
+   $blog_description = $row['blog_description'];
+   $blog_icon = $row['blog_icon'];
+   $keywords = $row['keywords'];
+   $hero_title = $row['hero_title'];
+   $footer_text = $row['footer_text'];
 }
 
 ?>
 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zxx">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo $blog_description ?>">
-    <title><?php echo $blog_name ?></title>
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="<?php echo $projectFolderName . '/' ?>admin/other_images/<?php echo $blog_image ?>">
-    <link rel="apple-touch-icon" href="<?php echo  $projectFolderName . '/' ?>admin/other_images/<?php echo $blog_image ?>">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo $projectFolderName . '/' ?>admin/other_images/<?php echo $blog_image ?>">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo  $projectFolderName . '/' ?>admin/other_images/<?php echo $blog_image ?>">
-    <!-- Web Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7cPlayfair+Display:400i" rel="stylesheet">
-    <link href="../../../use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <!-- Plugins-->
-    <link href="<?php echo $projectFolderName . '/' ?>assets/css/plugins.min.css" rel="stylesheet">
-    <!-- Template core CSS-->
-    <link href="<?php echo $projectFolderName . '/' ?>assets/css/template.css" rel="stylesheet">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.tiny.cloud/1/c3d2d0zcu3f00qqgrdfxkuxgu4cwex1uvnecm6dlfup7ei0n/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <!-- Custom CSS -->
-    <?php include "assets/css/custom.php" ?>
+   <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="">
+   <meta name="keyword" content="">
+   <meta name="author" content="" />
+   <!-- Page Title -->
+   <title><?php echo $title ?></title>
+   <!-- Main CSS -->
+   <link type="text/css" rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css" />
+   <link type="text/css" rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css" />
+   <link type="text/css" rel="stylesheet" href="assets/plugins/flag-icon/flag-icon.min.css" />
+   <link type="text/css" rel="stylesheet" href="assets/plugins/simple-line-icons/css/simple-line-icons.css">
+   <link type="text/css" rel="stylesheet" href="assets/plugins/ionicons/css/ionicons.css">
+   <link type="text/css" rel="stylesheet" href="assets/plugins/toastr/toastr.min.css">
+   <link type="text/css" rel="stylesheet" href="assets/plugins/chartist/chartist.css">
+   <link type="text/css" rel="stylesheet" href="assets/plugins/dropify/css/dropify.min.css">
+   <link type="text/css" rel="stylesheet" href="assets/plugins/dropzone/dropzone.css">
+   <link type="text/css" rel="stylesheet" href="assets/css/app.min.css" />
+   <link type="text/css" rel="stylesheet" href="assets/plugins/apex-chart/apexcharts.css">
+   <link type="text/css" rel="stylesheet" href="assets/css/app.min.css" />
+   <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
+   <link type="text/css" rel="stylesheet" href="assets/css/style.min.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link type="text/css" rel="stylesheet" href="assets/plugins/steps/jquery.steps.css">
+
+   <!-- Important JS -->
+   <script src="assets/plugins/chartist/chartist.js"></script>
+   <script src="assets/js/app.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.1/tinymce.min.js" integrity="sha512-in/06qQzsmVw+4UashY2Ta0TE3diKAm8D4aquSWAwVwsmm1wLJZnDRiM6e2lWhX+cSqJXWuodoqUq91LlTo1EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-
-    <!-- Ad Provider Integration -->
-    <?php
-
-    $provider = "SELECT * FROM ad_providers";
-    $get_provider = mysqli_query($connection, $provider);
-
-    while ($row = mysqli_fetch_assoc($get_provider)) {
-        $provider_code = $row['provider_code'];
-
-        echo $provider_code;
-    }
-
-    ?>
-
+   <!-- Favicon -->
+   <link rel="icon" href="other_images/<?php echo $blog_icon ?>" type="image/x-icon">
+   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+   <!-- WARNING: Respond.js doesn"t work if you view the page via file:// -->
+   <!--[if lt IE 9]>
+      <script src="http://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
 </head>
-
-<body>
-
-
-
-    <!-- Preloader-->
-    <!-- <div class="page-loader">
-        <div class="page-loader-inner">
-            <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Preloader end-->
-
-    <nav>
-        <div class="wrapper">
-            <div class="logo item">
-                <a class="item" href="<?php echo $projectFolderName ?>/index"><?php echo $blog_name ?></a>
-            </div>
-            <input type="radio" name="slider" id="menu-btn">
-            <input type="radio" name="slider" id="close-btn">
-            <ul class="nav-links">
-                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-
-                <?php if ($showHome == 'on') : ?>
-                    <li><a class="item" href="<?php echo $projectFolderName ?>/index.php">Home</a></li>
-                <?php endif ?>
-
-                <?php if ($login == 1 and $showAdmin == 'on' and $_SESSION['user_role'] !== 'subscriber') : ?>
-
-                    <?php
-
-                    echo "<li><a class='item' href='{$projectFolderName}/admin/'>Admin</a></li>";
-
-                    ?>
-
-                <?php else : ?>
-
-                    <?php if ($showLogin == 'on') : ?>
-                        <li><a class="item" href='<?php echo  $projectFolderName . "/" ?>login.php'>Login</a></li>
-                    <?php endif; ?>
-
-                <?php endif; ?>
-
-
-                <?php
-
-                $query = "SELECT * FROM categories";
-                $select_all_categories = mysqli_query($connection, $query);
-
-                while ($row = mysqli_fetch_assoc($select_all_categories)) {
-                    $cat_id = $row['cat_id'];
-                    $cat_title = $row['cat_title'];
-                    echo "<li><a class='item' href='/{$projectFolderName}/category/$cat_id'>{$cat_title}</a></li>";
-                }
-
-                ?>
-
-
-                <?php if ($showContact == 'on') : ?>
-
-                    <li><a class="item" href="<?php echo $projectFolderName . "/" ?>contact.php">Contact Us</a></li>
-
-                <?php endif ?>
-
-                <li>
-
-                    <?php
-                    if ($login !== 1) {
-                        $username = 'Profile';
-                    } else {
-                        $username = $_SESSION['username'];
-                    }
-                    ?>
-
-                    <a href="<?php if ($login !== 1) {
-                                    echo $projectFolderName . '/registration.php';
-                                } else {
-                                    echo '#';
-                                } ?>" class="desktop-item item"><?php if ($login == 1) {
-                                                                    echo 'Hi, ' . $username . ' <i class="fas fa-angle-down"></i>';
-                                                                } else {
-                                                                    echo 'Sign Up';
-                                                                } ?> </a>
-                    <input type="checkbox" id="showDrop">
-                    <label for="showDrop" class="mobile-item"><?php if ($login == 1) {
-                                                                    echo 'Hi, ' . $username . ' <i class="fas fa-angle-down"></i>';
-                                                                } else {
-                                                                    echo 'Sign Up';
-                                                                } ?></label>
-
-                    <?php
-
-                    if ($login == 1) {
-                        echo
-                        '
-                                <ul class="drop-menu">
-                                    <li><a href="' .  $projectFolderName . "/" . 'user/' . $username . '" class="item">My Profile</a></li>
-                                    <li><a href="' . $projectFolderName . "/" . 'profile.php" class="item">Settings</a></li>
-                                    <div class="dropdown-divider"></div>
-                                    <li><a class="item" onclick="logout_confirm()" href="#">Logout</a></li>
-                                </ul>
-                                
-                                ';
-                    }
-
-                    ?>
-
-                </li>
-
-            </ul>
-            <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
-        </div>
-    </nav>
-
-    <script>
-        function logout_confirm() {
-            Swal.fire({
-                position: 'top-end',
-                title: 'Are you sure to logout?',
-                text: "",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Logout'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location = "<?php echo $projectFolderName . '/' ?>includes/logout.php";
-                }
-            })
-        }
-    </script>
