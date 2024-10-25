@@ -28,7 +28,7 @@ https://cms.thinutech.software
 - Complete password forgot system
 - Show how many users online
 - Secured against SQL Injections
-- WYSIWYG HTML Editor for post creation
+- WYSIWYG HTML Editor for post creation (tinymce)
 - User related posts
 - Category related posts
 - Working Contact page
@@ -37,10 +37,8 @@ https://cms.thinutech.software
 - You can customize Site Logo, Site Title, Site theme - color, footer and etc using the admin panel
 - Clean Code with comments
 - Installation guide included
-- Database included
+- Database file
 - User management system
-- Attractive Dashboard
-
 
 ## Installation
 
@@ -93,7 +91,7 @@ Once the installation is successful, you will receive a confirmation message.
 Remove or rename the "setup" directory for security purposes.
 You can now access your Thinu-CMS blog by going to "http://yourdomain.com" in your web browser.
 
-Congratulations! You've successfully installed Thinu-CMS and can start creating and managing your blog content.
+Congratulations! You've successfully installed Thinu-CMS and can start creating and managing your blog.
 
 
 <h3 align="left">Support:</h3>
